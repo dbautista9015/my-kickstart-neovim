@@ -98,8 +98,36 @@ vim.g.maplocalleader = ' '
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, for help with jumping.
---  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+-- Experiment for yourself to see if you like it! MINE
+vim.opt.relativenumber = true
+
+-- Configure number of tab space and smart indenting MINE
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+
+-- Remap for going into Netrw Explorer MINE
+vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
+
+-- Remap for grabbing 1 or more lines and move them as a unit MINE
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+
+-- Remap for scrolling half a page up and down, then centering screen MINE
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+
+-- Remap for searching a term and once go to the next term, it centers screen MINE
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
+
+-- Remap for when yanking a word to have that word available for paste MINE
+vim.keymap.set('x', '<leader>p', '"_dP')
+
+-- Remap for using fugitive
+vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -221,6 +249,9 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup {
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+
+  -- Install fugitive for git
+  'tpope/vim-fugitive',
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -814,7 +845,7 @@ require('lazy').setup {
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
