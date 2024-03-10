@@ -126,9 +126,6 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 -- Remap for when yanking a word to have that word available for paste MINE
 vim.keymap.set('x', '<leader>p', '"_dP')
 
--- Remap for using fugitive
-vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
-
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
 
@@ -249,9 +246,6 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup {
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-
-  -- Install fugitive for git
-  'tpope/vim-fugitive',
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
